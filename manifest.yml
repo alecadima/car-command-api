@@ -1,0 +1,15 @@
+---
+applications:
+  - name: car-api
+    memory: 1G
+    instances: 1
+    random-route: true
+    path: ./target/car-api.jar
+    env:
+      JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.0.2_+ } }'
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: false}'
+      SPRING_PROFILES_ACTIVE: cloud
+    services:
+      - car-db
+      - service-registry
+      - config-server

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: schema-1.0
+      author: diegorocha
+      context: local, test
+      changes:
+        - sqlFile:
+            dbms: h2, mysql
+            path: 1.0/schema.sql
+            relativeToChangelogFile: true
+            stripComments: true

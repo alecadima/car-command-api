@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: car-api
+---
+spring:
+  profiles: default, h2, mysql
+  cloud:
+    config:
+      enabled: false
+    loadbalancer:
+      ribbon:
+        enabled: false
+eureka:
+  client:
+    enabled: false
+    registerWithEureka: false
+    fetchRegistry: false

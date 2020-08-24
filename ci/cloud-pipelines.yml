@@ -1,0 +1,60 @@
+test:
+  services:
+    - name: car-db
+      type: broker
+      broker: cleardb
+      plan: spark
+      useExisting: true
+#    - name: car-rabbitmq
+#      type: broker
+#      broker: cloudamqp
+#      plan: lemur
+#      useExisting: true
+#    - name: service-registry
+#      type: broker
+#      broker: p-service-registry
+#      plan: trial
+#      useExisting: true
+#    - name: config-server
+#      type: broker
+#      broker: p-config-server
+#      plan: trial
+#      params:
+#        git:
+#          uri: https://github.com/dprocha/car-config.git
+#      useExisting: true
+    - name: autoscaler
+      type: broker
+      broker: app-autoscaler
+      plan: standard
+      useExisting: true
+stage:
+  services:
+    - name: car-db
+      type: broker
+      broker: cleardb
+      plan: spark
+      useExisting: true
+#    - name: car-rabbitmq
+#      type: broker
+#      broker: cloudamqp
+#      plan: lemur
+#      useExisting: true
+#    - name: service-registry
+#      type: broker
+#      broker: p-service-registry
+#      plan: trial
+#      useExisting: true
+#    - name: config-server
+#      type: broker
+#      broker: p-config-server
+#      plan: trial
+#      params:
+#        git:
+#          uri: https://github.com/dprocha/car-config.git
+#      useExisting: true
+    - name: autoscaler
+      type: broker
+      broker: app-autoscaler
+      plan: standard
+      useExisting: true

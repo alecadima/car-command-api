@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: car-api
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    git:
+      mode: full
+
+wavefront:
+  application:
+    name: car-app
+    service: car-api
+
+car:
+  security:
+    enable: false
+  swagger:
+    title: "REST Car Command API Documentation"
+    description: "This is REST API documentation of the CAR Command API"
+    version: "1.0.0"
+    termsOfServiceUrl: "CAR Command API terms of service"
+    license: "Apache 2.0"
+    licenseUrl: "http://www.apache.org/licenses/LICENSE-2.0"
+    contact:
+      name: "Diego Pereira da Rocha"
+      url: "https://github.com/dprocha/car-api"
+      email: "ddarocha@vmware.com"
+---
+spring:
+  profiles: h2
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:car
+      username: car
+      password: car
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    contexts: local
+    drop-first: true
+
+---
+spring:
+  profiles: mysql
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost/car?createDatabaseIfNotExist=TRUE
+      username: car
+      password: car
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+  liquibase:
+    contexts: local
+    drop-first: true

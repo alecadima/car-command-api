@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mysql-server:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=car
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=car
+      - MYSQL_PASSWORD=car
+      - MYSQL_DATABASE=car
+    volumes:
+      - "./conf.d:/etc/mysql/conf.d:ro"
+#  rabbit-server:
+#    image: rabbitmq:3.8.3-management-alpine
+#    ports:
+#      - 5672:5672
+#      - 15672:15672
